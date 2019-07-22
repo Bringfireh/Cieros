@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Cieros.Models.Guardian>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FatherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotherPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FatherPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FatherEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotherEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActiveStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FatherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotherPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FatherPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FatherEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotherEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActiveStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

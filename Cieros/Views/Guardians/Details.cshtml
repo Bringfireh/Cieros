@@ -1,0 +1,90 @@
+﻿@model Cieros.Models.Guardian
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Guardian</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FatherEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FatherEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotherEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotherEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActiveStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActiveStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
