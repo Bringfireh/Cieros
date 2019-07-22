@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cieros", "Cieros\Cieros.csproj", "{89A45426-E1DB-4644-964C-197AD59F965A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89A45426-E1DB-4644-964C-197AD59F965A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A45426-E1DB-4644-964C-197AD59F965A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A45426-E1DB-4644-964C-197AD59F965A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A45426-E1DB-4644-964C-197AD59F965A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D065F77-00C5-4074-A731-42EBB53C7893}
+	EndGlobalSection
+EndGlobal
