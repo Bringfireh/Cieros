@@ -17,7 +17,9 @@ namespace Cieros.Controllers
         // GET: Guardians
         public ActionResult Index()
         {
-            return View(db.Guardians.ToList());
+            var guardians = db.Guardians.ToList();
+            ViewBag.Count = guardians.Count();
+            return View(guardians);
         }
 
         // GET: Guardians/Details/5

@@ -18,6 +18,7 @@ namespace Cieros.Controllers
         public ActionResult Index()
         {
             var students = db.Students.Include(s => s.Guardian);
+            ViewBag.Count = students.Count();
             return View(students.ToList());
         }
 
@@ -52,6 +53,8 @@ namespace Cieros.Controllers
         {
             if (ModelState.IsValid)
             {
+                student.ID = Guid.NewGuid().ToString().Substring(0, 16);
+
                 db.Students.Add(student);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -10,7 +10,8 @@ namespace Cieros.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            
+            return RedirectToAction("DashBoard");
         }
 
         public ActionResult About()
@@ -23,6 +24,11 @@ namespace Cieros.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult DashBoard()
+        {
 
             return View();
         }

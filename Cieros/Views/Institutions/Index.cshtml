@@ -1,81 +1,125 @@
 ﻿@model IEnumerable<Cieros.Models.Institution>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Institution";
 }
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Institution  </h2>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostalAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FaxNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WebsiteAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Motto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th></th>
-    </tr>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Institution  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    @Html.ActionLink("Create New", "Create")</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostalAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmailAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FaxNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WebsiteAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Motto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Name of Institution")
+                            </th>
+                            @*<th>
+                                @Html.DisplayNameFor(model => model.PostalAddress)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactAddress)
+                            </th>*@
+                            <th>
+                                @Html.DisplayName("Email Address")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Phone Number")
+                            </th>
+                            @*<th>
+                                @Html.DisplayNameFor(model => model.FaxNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WebsiteAddress)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Motto)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateCreated)
+                            </th>*@
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Name of Institution")
+                            </th>
+                            @*<th>
+                @Html.DisplayNameFor(model => model.PostalAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactAddress)
+            </th>*@
+                            <th>
+                                @Html.DisplayName("Email Address")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Phone Number")
+                            </th>
+                            @*<th>
+                @Html.DisplayNameFor(model => model.FaxNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WebsiteAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>*@
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.PostalAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ContactAddress)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.FaxNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WebsiteAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Motto)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateCreated)
+                                </td>*@
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
