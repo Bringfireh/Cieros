@@ -21,10 +21,9 @@ namespace Cieros.Models
         [StringLength(50)]
         public string Sex { get; set; }
 
-        [Column(TypeName = "date")]
-        [Display(Name = "Date Of Birth")]
+        //[Column(TypeName = "date")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-       
         public DateTime? DateOfBirth { get; set; }
 
         [StringLength(50)]

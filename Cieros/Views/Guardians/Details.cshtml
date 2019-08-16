@@ -1,90 +1,75 @@
 ﻿@model Cieros.Models.Guardian
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Guardian Details";
 }
 
-<h2>Details</h2>
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Guardian Details </h2>
 
-<div>
-    <h4>Guardian</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FatherName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FatherName)
-        </dd>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> Guardian  Details  |     @Html.ActionLink("Back to List", "Index")</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="col-lg-6 ">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MotherName)
-        </dt>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td> @Html.DisplayName("Father's Name") </td>
+                            <td> @Html.DisplayFor(model => model.FatherName)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Mother's Name")</td>
+                            <td>  @Html.DisplayFor(model => model.MotherName)</td>
+                        </tr>
+                        <tr>
+                            <td>  @Html.DisplayName("Mothers Phone Number")</td>
+                            <td> @Html.DisplayFor(model => model.MotherPhoneNumber)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Father's Phone Number")</td>
+                            <td> @Html.DisplayFor(model => model.FatherPhoneNumber)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Father's Email")</td>
+                            <td>  @Html.DisplayFor(model => model.FatherEmail)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayName("Mother's EMail")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.MotherEmail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayName("Contact Address")</td>
+                            <td> @Html.DisplayFor(model => model.ContactAddress)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayName("Work Address")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.WorkAddress)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayName("Active Status")</td>
+                            <td>  @Html.DisplayFor(model => model.ActiveStatus)</td>
+                        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.MotherName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MotherPhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MotherPhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FatherPhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FatherPhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FatherEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FatherEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MotherEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MotherEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContactAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ActiveStatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ActiveStatus)
-        </dd>
-
-    </dl>
+                    </table>
+                    
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

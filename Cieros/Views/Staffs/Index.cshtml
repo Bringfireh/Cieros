@@ -1,0 +1,211 @@
+﻿@model IEnumerable<Cieros.Models.Staff>
+
+@{
+    ViewBag.Title = "Staff ";
+}
+
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Staff  </h2>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Staff  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    @Html.ActionLink("Create New", "Create")</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Staff ID")
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Surname)
+                            </th>
+                            <th>
+                                @Html.DisplayName("Other Names")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Sex")
+                            </th>
+                            @*<th>
+            @Html.DisplayNameFor(model => model.MaritalStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaidenName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatOfOrigin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocalGovt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Religion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discipline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qualification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfAppointment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountType)
+        </th>*@
+                            <th>
+                                @Html.DisplayName("Phone Number")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Email Address")
+                            </th>
+                            @*<th>
+            @Html.DisplayNameFor(model => model.NextOfKinName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextOfKinAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextOfKinPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextOfKinEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextOfKinRelationship)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasicSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlySalary)
+        </th>*@
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StaffID)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Surname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Othernames)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sex)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.MaritalStatus)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaidenName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Country)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StatOfOrigin)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LocalGovt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Religion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Discipline)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Qualification)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateOfAppointment)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Position)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BankName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AccountType)
+                                </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.NextOfKinName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextOfKinAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextOfKinPhone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextOfKinEmail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextOfKinRelationship)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BasicSalary)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MonthlySalary)
+                                </td>*@
+                                <td>
+                                    <a href="~/Staffs/Edit?id=@item.StaffID "> Edit </a> |
+                                    <a href="~/Staffs/Details?id=@item.StaffID">Details</a> |
+                                    <a href="~/Staffs/Delete?id=@item.StaffID">Delete</a>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.StaffID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.StaffID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.StaffID })*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

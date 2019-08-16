@@ -1,96 +1,79 @@
 ﻿@model Cieros.Models.Institution
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Institution";
 }
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Institution </h2>
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Institution</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostalAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostalAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContactAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FaxNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FaxNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WebsiteAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WebsiteAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Motto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Motto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Delete Institution   |     @Html.ActionLink("Back to List", "Index")</h6>
         </div>
-    }
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="col-lg-6 ">
+                    <h3>Are you sure you want to delete this?</h3>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td> @Html.DisplayName("Institution Name") </td>
+                            <td>  @Html.DisplayFor(model => model.Name)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Postal Address")</td>
+                            <td> @Html.DisplayFor(model => model.PostalAddress)</td>
+                        </tr>
+                        <tr>
+                            <td>  @Html.DisplayName("Contact Address")</td>
+                            <td> @Html.DisplayFor(model => model.ContactAddress)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Email Address")</td>
+                            <td> @Html.DisplayFor(model => model.EmailAddress)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Phone Number")</td>
+                            <td>  @Html.DisplayFor(model => model.PhoneNumber)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayName("Fax Number")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.FaxNumber)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayName("Website Address")</td>
+                            <td>@Html.DisplayFor(model => model.WebsiteAddress)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Motto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Motto)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayName("Date Created")</td>
+                            <td>@Html.DisplayFor(model => model.DateCreated)</td>
+                        </tr>
+
+                    </table>
+                    @using (Html.BeginForm("Delete", "Institutions", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "user", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            <input type="submit" value="Delete" class="btn btn-primary btn-user btn-block" />
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.ActionLink("Back to List", "Index")
 </div>

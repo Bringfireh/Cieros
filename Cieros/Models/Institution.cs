@@ -32,7 +32,8 @@ namespace Cieros.Models
 
         [StringLength(50)]
         public string Motto { get; set; }
-
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateCreated { get; set; }
     }
 }

@@ -10,111 +10,107 @@ using Cieros.Models;
 
 namespace Cieros.Controllers
 {
-    public class GuardiansController : Controller
+    public class StaffsController : Controller
     {
         private MyModel db = new MyModel();
 
-        // GET: Guardians
+        // GET: Staffs
         public ActionResult Index()
         {
-            var guardians = db.Guardians.ToList();
-            ViewBag.Count = guardians.Count();
-            return View(guardians);
+            return View(db.Staffs.ToList());
         }
 
-        // GET: Guardians/Details/5
+        // GET: Staffs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            Staff staff = db.Staffs.Find(id);
+            if (staff == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(staff);
         }
 
-        // GET: Guardians/Create
+        // GET: Staffs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardians/Create
+        // POST: Staffs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FatherName,MotherName,MotherPhoneNumber,FatherPhoneNumber,FatherEmail,MotherEmail,ContactAddress,WorkAddress,ActiveStatus")] Guardian guardian)
+        public ActionResult Create([Bind(Include = "StaffID,Surname,Othernames,Sex,MaritalStatus,DateOfBirth,MaidenName,Country,StatOfOrigin,LocalGovt,Religion,Discipline,Qualification,DateOfAppointment,Position,BankName,AccountNumber,AccountType,PhoneNumber,EmailAddress,NextOfKinName,NextOfKinAddress,NextOfKinPhone,NextOfKinEmail,NextOfKinRelationship,BasicSalary,MonthlySalary")] Staff staff)
         {
             if (ModelState.IsValid)
             {
-                guardian.ID = Guid.NewGuid().ToString().Substring(0, 16);
-                guardian.ActiveStatus = true;
-                db.Guardians.Add(guardian);
+                db.Staffs.Add(staff);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardian);
+            return View(staff);
         }
 
-        // GET: Guardians/Edit/5
+        // GET: Staffs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            Staff staff = db.Staffs.Find(id);
+            if (staff == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(staff);
         }
 
-        // POST: Guardians/Edit/5
+        // POST: Staffs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FatherName,MotherName,MotherPhoneNumber,FatherPhoneNumber,FatherEmail,MotherEmail,ContactAddress,WorkAddress,ActiveStatus")] Guardian guardian)
+        public ActionResult Edit([Bind(Include = "StaffID,Surname,Othernames,Sex,MaritalStatus,DateOfBirth,MaidenName,Country,StatOfOrigin,LocalGovt,Religion,Discipline,Qualification,DateOfAppointment,Position,BankName,AccountNumber,AccountType,PhoneNumber,EmailAddress,NextOfKinName,NextOfKinAddress,NextOfKinPhone,NextOfKinEmail,NextOfKinRelationship,BasicSalary,MonthlySalary")] Staff staff)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardian).State = EntityState.Modified;
+                db.Entry(staff).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardian);
+            return View(staff);
         }
 
-        // GET: Guardians/Delete/5
+        // GET: Staffs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            Staff staff = db.Staffs.Find(id);
+            if (staff == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(staff);
         }
 
-        // POST: Guardians/Delete/5
+        // POST: Staffs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Guardian guardian = db.Guardians.Find(id);
-            db.Guardians.Remove(guardian);
+            Staff staff = db.Staffs.Find(id);
+            db.Staffs.Remove(staff);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

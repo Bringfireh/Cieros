@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Cieros.Models.MonthlySalary>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasicAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Additions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deductions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Month)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasicAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Additions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deductions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Balance)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

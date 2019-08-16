@@ -1,82 +1,73 @@
 ﻿@model Cieros.Models.Student
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Student Details";
 }
 
-<h2>Details</h2>
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Student Details </h2>
 
-<div>
-    <h4>Student</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Guardian.FatherName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Guardian.FatherName)
-        </dd>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> Student  Details  |     @Html.ActionLink("Back to List", "Index")</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="col-lg-6 ">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
+                    <table class="table table-bordered table-striped">
 
-        <dd>
-            @Html.DisplayFor(model => model.Surname)
-        </dd>
+                        <tr>
+                            <td> @Html.DisplayName("Surname")</td>
+                            <td>  @Html.DisplayFor(model => model.Surname)</td>
+                        </tr>
+                        <tr>
+                            <td>  @Html.DisplayName("Other Names")</td>
+                            <td>  @Html.DisplayFor(model => model.Othernames)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Sex")</td>
+                            <td> @Html.DisplayFor(model => model.Sex)</td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Date Of Birth")</td>
+                            <td>   @Html.DisplayFor(model => model.DateOfBirth)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayName("Class")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.StdClass)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayName("Label")</td>
+                            <td>  @Html.DisplayFor(model => model.Label)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayName("Admission Number")
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.AdmissionNumber)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> @Html.DisplayName("Father's Name") </td>
+                            <td>  @Html.DisplayFor(model => model.Guardian.FatherName)</td>
+                        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Othernames)
-        </dt>
+                    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Othernames)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sex)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sex)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StdClass)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StdClass)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Label)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Label)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AdmissionNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdmissionNumber)
-        </dd>
-
-    </dl>
+                </div>
+                
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

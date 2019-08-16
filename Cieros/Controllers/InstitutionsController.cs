@@ -17,6 +17,7 @@ namespace Cieros.Controllers
         // GET: Institutions
         public ActionResult Index()
         {
+            ViewBag.InstitutionName = db.Institutions.Select(ie => ie.Name).FirstOrDefault();
             return View(db.Institutions.ToList());
         }
 
@@ -27,6 +28,7 @@ namespace Cieros.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ViewBag.InstitutionName = db.Institutions.Select(ie => ie.Name).FirstOrDefault();
             Institution institution = db.Institutions.Find(id);
             if (institution == null)
             {
@@ -38,6 +40,7 @@ namespace Cieros.Controllers
         // GET: Institutions/Create
         public ActionResult Create()
         {
+            ViewBag.InstitutionName = db.Institutions.Select(ie => ie.Name).FirstOrDefault();
             return View();
         }
 
@@ -50,9 +53,21 @@ namespace Cieros.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Institutions.Add(institution);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                int ccount = db.Institutions.Count();
+                ViewBag.InstitutionName = db.Institutions.Select(ie => ie.Name).FirstOrDefault();
+                if (ccount <= 0)
+                {
+                    institution.ID = Guid.NewGuid().ToString().Substring(0, 16);
+                    institution.DateCreated = DateTime.Now;
+                    db.Institutions.Add(institution);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.InstitutionName = db.Institutions.Select(ie => ie.Name).FirstOrDefault();
+                    ViewBag.Result = "Institution Already Created. Could not create Institution";
+                }
             }
 
             return View(institution);
@@ -82,6 +97,9 @@ namespace Cieros.Controllers
         {
             if (ModelState.IsValid)
             {
+                //institution.ID = Guid.NewGuid().ToString().Substring(0, 16);
+                ViewBag.InstitutionName = db.Institutions.Select(ie => ie.Name).FirstOrDefault();
+                institution.DateCreated = DateTime.Now;
                 db.Entry(institution).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -1,0 +1,179 @@
+﻿@model Cieros.Models.Staff
+
+@{
+    ViewBag.Title = "Staff Details";
+}
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Staff Details </h2>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary"> Staff  Details  |     @Html.ActionLink("Back to List", "Index")</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-lg-6 ">
+
+                        <table class="table table-bordered table-striped">
+
+                            <tr>
+                                <td> @Html.DisplayName("Surname")</td>
+                                <td>  @Html.DisplayFor(model => model.Surname)</td>
+                            </tr>
+                            <tr>
+                                <td>  @Html.DisplayName("Other Names")</td>
+                                <td>  @Html.DisplayFor(model => model.Othernames)</td>
+                            </tr>
+                            <tr>
+                                <td> @Html.DisplayName("Sex")</td>
+                                <td> @Html.DisplayFor(model => model.Sex)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Marital Status")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.MaritalStatus)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> @Html.DisplayName("Date Of Birth")</td>
+                                <td>   @Html.DisplayFor(model => model.DateOfBirth)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Maiden Name")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.MaidenName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Country")</td>
+                                <td>  @Html.DisplayFor(model => model.Country)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("State of Origin")</td>
+                                <td>  @Html.DisplayFor(model => model.StatOfOrigin)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Local Government")</td>
+                                <td>@Html.DisplayFor(model => model.LocalGovt)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Religion")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Religion)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> @Html.DisplayName("Discipline (Specialty)") </td>
+                                <td>  @Html.DisplayFor(model => model.Discipline)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Qualification")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Qualification)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Date of Appointment")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.DateOfAppointment)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Position")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Position)
+                                </td>
+                            </tr>
+                           
+                        </table>
+
+                    </div>
+                    <div class="col-lg-6 ">
+
+                        <table class="table table-bordered table-striped">
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Bank Name")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.BankName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Account Number")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.AccountNumber)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Account Type")</td>
+                                <td> @Html.DisplayFor(model => model.AccountType)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Phone Number")</td>
+                                <td> @Html.DisplayFor(model => model.PhoneNumber)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Email Address")</td>
+                                <td> @Html.DisplayFor(model => model.EmailAddress)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Next of Kin")</td>
+                                <td> @Html.DisplayFor(model => model.NextOfKinName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Next of Kin Address")</td>
+                                <td> @Html.DisplayFor(model => model.NextOfKinAddress)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Next of Kin Phone")</td>
+                                <td> @Html.DisplayFor(model => model.NextOfKinPhone)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Next of Kin Email")</td>
+                                <td> @Html.DisplayFor(model => model.NextOfKinEmail)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Next of Kin Relationship")</td>
+                                <td> @Html.DisplayFor(model => model.NextOfKinRelationship)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Basic Salary")</td>
+                                <td> @Html.DisplayFor(model => model.BasicSalary)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Monthly Salary")</td>
+                                <td> @Html.DisplayFor(model => model.MonthlySalary)</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+                
+
+            </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.StaffID }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            
+        </div>
+    </div>
+</div>

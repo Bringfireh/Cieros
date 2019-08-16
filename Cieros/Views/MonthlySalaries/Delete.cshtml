@@ -1,0 +1,80 @@
+﻿@model Cieros.Models.MonthlySalary
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MonthlySalary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Month)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Month)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasicAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasicAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Additions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Additions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Deductions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Deductions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

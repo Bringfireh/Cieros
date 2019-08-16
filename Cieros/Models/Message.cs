@@ -16,7 +16,8 @@ namespace Cieros.Models
         public string Recepient { get; set; }
 
         public string MessageBody { get; set; }
-
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateSent { get; set; }
 
         [StringLength(50)]

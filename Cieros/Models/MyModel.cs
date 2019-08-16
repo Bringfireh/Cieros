@@ -15,6 +15,9 @@ namespace Cieros.Models
         public virtual DbSet<Guardian> Guardians { get; set; }
         public virtual DbSet<Institution> Institutions { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
+        public virtual DbSet<RankClass> RankClasses { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Student> Students { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

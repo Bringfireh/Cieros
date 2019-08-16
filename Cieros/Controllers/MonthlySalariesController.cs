@@ -10,111 +10,112 @@ using Cieros.Models;
 
 namespace Cieros.Controllers
 {
-    public class GuardiansController : Controller
+    public class MonthlySalariesController : Controller
     {
         private MyModel db = new MyModel();
 
-        // GET: Guardians
+        // GET: MonthlySalaries
         public ActionResult Index()
         {
-            var guardians = db.Guardians.ToList();
-            ViewBag.Count = guardians.Count();
-            return View(guardians);
+            var monthlySalaries = db.MonthlySalaries.Include(m => m.Staff);
+            return View(monthlySalaries.ToList());
         }
 
-        // GET: Guardians/Details/5
+        // GET: MonthlySalaries/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            MonthlySalary monthlySalary = db.MonthlySalaries.Find(id);
+            if (monthlySalary == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(monthlySalary);
         }
 
-        // GET: Guardians/Create
+        // GET: MonthlySalaries/Create
         public ActionResult Create()
         {
+            ViewBag.StaffID = new SelectList(db.Staffs, "StaffID", "Surname");
             return View();
         }
 
-        // POST: Guardians/Create
+        // POST: MonthlySalaries/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FatherName,MotherName,MotherPhoneNumber,FatherPhoneNumber,FatherEmail,MotherEmail,ContactAddress,WorkAddress,ActiveStatus")] Guardian guardian)
+        public ActionResult Create([Bind(Include = "ID,StaffID,Month,Year,BasicAmount,Additions,Deductions,Balance")] MonthlySalary monthlySalary)
         {
             if (ModelState.IsValid)
             {
-                guardian.ID = Guid.NewGuid().ToString().Substring(0, 16);
-                guardian.ActiveStatus = true;
-                db.Guardians.Add(guardian);
+                db.MonthlySalaries.Add(monthlySalary);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardian);
+            ViewBag.StaffID = new SelectList(db.Staffs, "StaffID", "Surname", monthlySalary.StaffID);
+            return View(monthlySalary);
         }
 
-        // GET: Guardians/Edit/5
+        // GET: MonthlySalaries/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            MonthlySalary monthlySalary = db.MonthlySalaries.Find(id);
+            if (monthlySalary == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            ViewBag.StaffID = new SelectList(db.Staffs, "StaffID", "Surname", monthlySalary.StaffID);
+            return View(monthlySalary);
         }
 
-        // POST: Guardians/Edit/5
+        // POST: MonthlySalaries/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FatherName,MotherName,MotherPhoneNumber,FatherPhoneNumber,FatherEmail,MotherEmail,ContactAddress,WorkAddress,ActiveStatus")] Guardian guardian)
+        public ActionResult Edit([Bind(Include = "ID,StaffID,Month,Year,BasicAmount,Additions,Deductions,Balance")] MonthlySalary monthlySalary)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardian).State = EntityState.Modified;
+                db.Entry(monthlySalary).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardian);
+            ViewBag.StaffID = new SelectList(db.Staffs, "StaffID", "Surname", monthlySalary.StaffID);
+            return View(monthlySalary);
         }
 
-        // GET: Guardians/Delete/5
+        // GET: MonthlySalaries/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            MonthlySalary monthlySalary = db.MonthlySalaries.Find(id);
+            if (monthlySalary == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(monthlySalary);
         }
 
-        // POST: Guardians/Delete/5
+        // POST: MonthlySalaries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Guardian guardian = db.Guardians.Find(id);
-            db.Guardians.Remove(guardian);
+            MonthlySalary monthlySalary = db.MonthlySalaries.Find(id);
+            db.MonthlySalaries.Remove(monthlySalary);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

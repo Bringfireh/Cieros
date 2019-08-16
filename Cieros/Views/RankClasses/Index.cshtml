@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Cieros.Models.RankClass>
+
+@{
+    ViewBag.Title = "Rank Classes";
+}
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Rank Classes </h2>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Rank Classes  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    @Html.ActionLink("Create New", "Create")</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Class" )
+                            </th>
+                            <th>
+                                @Html.DisplayName("Next Class")
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                    <tbody>
+
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StdClass)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextClass)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.StdClass }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.StdClass }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.StdClass })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

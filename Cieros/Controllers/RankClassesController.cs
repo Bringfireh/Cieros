@@ -10,111 +10,107 @@ using Cieros.Models;
 
 namespace Cieros.Controllers
 {
-    public class GuardiansController : Controller
+    public class RankClassesController : Controller
     {
         private MyModel db = new MyModel();
 
-        // GET: Guardians
+        // GET: RankClasses
         public ActionResult Index()
         {
-            var guardians = db.Guardians.ToList();
-            ViewBag.Count = guardians.Count();
-            return View(guardians);
+            return View(db.RankClasses.ToList());
         }
 
-        // GET: Guardians/Details/5
+        // GET: RankClasses/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            RankClass rankClass = db.RankClasses.Find(id);
+            if (rankClass == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(rankClass);
         }
 
-        // GET: Guardians/Create
+        // GET: RankClasses/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Guardians/Create
+        // POST: RankClasses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FatherName,MotherName,MotherPhoneNumber,FatherPhoneNumber,FatherEmail,MotherEmail,ContactAddress,WorkAddress,ActiveStatus")] Guardian guardian)
+        public ActionResult Create([Bind(Include = "StdClass,NextClass")] RankClass rankClass)
         {
             if (ModelState.IsValid)
             {
-                guardian.ID = Guid.NewGuid().ToString().Substring(0, 16);
-                guardian.ActiveStatus = true;
-                db.Guardians.Add(guardian);
+                db.RankClasses.Add(rankClass);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(guardian);
+            return View(rankClass);
         }
 
-        // GET: Guardians/Edit/5
+        // GET: RankClasses/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            RankClass rankClass = db.RankClasses.Find(id);
+            if (rankClass == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(rankClass);
         }
 
-        // POST: Guardians/Edit/5
+        // POST: RankClasses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FatherName,MotherName,MotherPhoneNumber,FatherPhoneNumber,FatherEmail,MotherEmail,ContactAddress,WorkAddress,ActiveStatus")] Guardian guardian)
+        public ActionResult Edit([Bind(Include = "StdClass,NextClass")] RankClass rankClass)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(guardian).State = EntityState.Modified;
+                db.Entry(rankClass).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(guardian);
+            return View(rankClass);
         }
 
-        // GET: Guardians/Delete/5
+        // GET: RankClasses/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Guardian guardian = db.Guardians.Find(id);
-            if (guardian == null)
+            RankClass rankClass = db.RankClasses.Find(id);
+            if (rankClass == null)
             {
                 return HttpNotFound();
             }
-            return View(guardian);
+            return View(rankClass);
         }
 
-        // POST: Guardians/Delete/5
+        // POST: RankClasses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Guardian guardian = db.Guardians.Find(id);
-            db.Guardians.Remove(guardian);
+            RankClass rankClass = db.RankClasses.Find(id);
+            db.RankClasses.Remove(rankClass);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
