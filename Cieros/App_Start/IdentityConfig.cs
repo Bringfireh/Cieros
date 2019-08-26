@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Cieros.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Cieros
 {
@@ -27,8 +29,27 @@ namespace Cieros
     {
         public Task SendAsync(IdentityMessage message)
         {
+
             // Plug in your SMS service here to send a text message.
             return Task.FromResult(0);
+        }
+
+        private string BASE_URL = "https://api.smartsmssolutions.com/";
+        public Task<string> Send_SMS(string Message, string SenderID, string Recepients)
+        {
+            try
+            {
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(BASE_URL);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                string parameters = "smsapi.php?username=bringfireh&password=bringfireh$14201922&sender=" + SenderID + "&recipient=" + Recepients + "&message=" + Message;
+                HttpResponseMessage response = client.GetAsync(parameters).Result;
+                return response.Content.ReadAsStringAsync();
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 

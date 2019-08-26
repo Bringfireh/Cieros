@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Cieros.Models.Guardian>
+
+@{
+    ViewBag.Title = "Single Guardian Message";
+}
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Message Guardians  </h2>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Guardians  </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Father's Name")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Mother's Name")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Mother's Phone Number")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Father's Phone Number")
+                            </th>
+                           
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Father's Name")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Mother's Name")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Mother's Phone Number")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Father's Phone Number")
+                            </th>
+                           
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FatherName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MotherName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MotherPhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FatherPhoneNumber)
+                                </td>
+                               
+                                <td>
+                                    <a href="~/Messages/SingleMessage/@item.ID">New Message</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

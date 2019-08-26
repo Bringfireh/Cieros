@@ -1,25 +1,37 @@
 ﻿@model IEnumerable<Cieros.Models.MonthlySalary>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Monthly Salary";
 }
 <div class="container-fluid">
-    <h2 class="h3 mb-2 text-gray-800">Rank Classes </h2>
+    <h2 class="h3 mb-2 text-gray-800">Payroll </h2>
 
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Rank Classes  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    @Html.ActionLink("Create New", "Create")</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Payroll  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    <a href="">Add To All</a>     |  <a href="">Deduct from All</a></h6>
         </div>
+        <div class="col-lg-6 ">
+            <form method="post" action="~/MonthlySalaries" name="frm" id="frm" class="user" role="form">
+                <table>
+                    <tr>
+                        <td> @Html.DropDownList("Month", new SelectList(new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November" }), htmlAttributes: new { @class = "form-control form-control-user", @Required = "required", @Style = "padding:0.4rem 1rem !important" })</td>
+                        <td>@Html.DropDownList("Year", new SelectList(new string[] { "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040" }), htmlAttributes: new { @class = "form-control form-control-user", @Required = "required", @Style = "padding:0.4rem 1rem !important" })</td>
+                        <td><input type="submit" class="btn btn-outline-primary" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <hr />
         <div class="card-body">
             <div class="table-responsive">
-               
 
 
-                    <table class="table">
-                        <tr>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
                             <th>
-                                @Html.DisplayNameFor(model => model.Staff.Surname)
+                                @Html.DisplayName("Staff Name")
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Month)
@@ -28,7 +40,7 @@
                                 @Html.DisplayNameFor(model => model.Year)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.BasicAmount)
+                                @Html.DisplayName("Basic Amount")
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Additions)
@@ -41,12 +53,23 @@
                             </th>
                             <th></th>
                         </tr>
-
+                        </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">TOTAL AMOUNT</td>
+                            <td align="right">@Model.Sum(m => m.BasicAmount)</td>
+                            <td align="right">@Model.Sum(m => m.Additions)</td>
+                            <td align="right">@Model.Sum(m => m.Deductions)</td>
+                            <td align="right">@Model.Sum(m => m.Balance)</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Staff.Surname)
+                                    @Html.DisplayFor(modelItem => item.Staff.Surname) &nbsp;  @Html.DisplayFor(modelItem => item.Staff.Othernames)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Month)
@@ -54,28 +77,30 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Year)
                                 </td>
-                                <td>
+                                <td align="right">
                                     @Html.DisplayFor(modelItem => item.BasicAmount)
                                 </td>
-                                <td>
+                                <td align="right">
                                     @Html.DisplayFor(modelItem => item.Additions)
                                 </td>
-                                <td>
+                                <td align="right">
                                     @Html.DisplayFor(modelItem => item.Deductions)
                                 </td>
-                                <td>
+                                <td align="right">
                                     @Html.DisplayFor(modelItem => item.Balance)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    <a href="~/MonthlySalaries/Edit?id=@item.ID">Edit</a>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ID })*@ |
+                                   
                                     @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                                 </td>
                             </tr>
                         }
+                       
+                    </tbody>
+                </table>
 
-                    </table>
-               
             </div>  
         </div>
     </div>

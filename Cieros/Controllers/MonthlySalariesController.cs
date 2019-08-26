@@ -17,10 +17,40 @@ namespace Cieros.Controllers
         // GET: MonthlySalaries
         public ActionResult Index()
         {
-            var monthlySalaries = db.MonthlySalaries.Include(m => m.Staff);
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == "July" && m.Year == "2019").Include(m => m.Staff);
+            ViewBag.Count = monthlySalaries.Count();
             return View(monthlySalaries.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string Month, string Year)
+        {
+            int count = db.MonthlySalaries.Where(m => m.Month == Month && m.Year == Year).Count();
+           
+            if(count <= 0)
+            {
+                var staff = db.Staffs.ToList();
+                foreach (var item in staff)
+                {
+                    MonthlySalary ms = new MonthlySalary();
+                    ms.ID = item.StaffID + Month + Year;
+                    ms.StaffID = item.StaffID;
+                    ms.Month = Month;
+                    ms.Year = Year;
+                    ms.BasicAmount = item.MonthlySalary;
+                    ms.Additions = (decimal)0.00;
+                    ms.Deductions = (decimal)0.00;
+                    ms.Balance = item.MonthlySalary;
+                    db.MonthlySalaries.Add(ms);
+                    db.SaveChanges();
+
+                }
+            }
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month==Month && m.Year==Year).Include(m => m.Staff);
+            ViewBag.Count = monthlySalaries.Count();
+            return View(monthlySalaries.ToList());
+        }
+        
         // GET: MonthlySalaries/Details/5
         public ActionResult Details(string id)
         {
@@ -35,11 +65,12 @@ namespace Cieros.Controllers
             }
             return View(monthlySalary);
         }
-
+       
         // GET: MonthlySalaries/Create
         public ActionResult Create()
         {
             ViewBag.StaffID = new SelectList(db.Staffs, "StaffID", "Surname");
+            
             return View();
         }
 
@@ -69,11 +100,17 @@ namespace Cieros.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             MonthlySalary monthlySalary = db.MonthlySalaries.Find(id);
+           
             if (monthlySalary == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StaffID = new SelectList(db.Staffs, "StaffID", "Surname", monthlySalary.StaffID);
+            var staff = from s in db.Staffs
+                        where s.StaffID == monthlySalary.StaffID
+                        select new { StaffID = s.StaffID,
+                            StaffName = s.Surname + " " + s.Othernames };
+           
+            ViewBag.StaffID = new SelectList(staff, "StaffID", "StaffName", monthlySalary.StaffID);
             return View(monthlySalary);
         }
 

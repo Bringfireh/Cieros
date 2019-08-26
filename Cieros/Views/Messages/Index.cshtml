@@ -1,57 +1,70 @@
 ﻿@model IEnumerable<Cieros.Models.Message>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Messages";
 }
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Messages  </h2>
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Recepient)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageBody)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateSent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageTitle)
-        </th>
-        <th></th>
-    </tr>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Messages  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   </h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recepient)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageBody)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateSent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageTitle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr style="background-color:#ececec; font-weight:bold;color:#666">
+                            <th>
+                                @Html.DisplayName("Date Sent")
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Recepient)
+                            </th>
+                            <th>
+                                @Html.DisplayName("Message Body")
+                            </th>
 
-</table>
+                            <th>
+                                @Html.DisplayName("Message Type")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Message Title")
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateSent)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Recepient)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MessageBody)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MessageType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MessageTitle)
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

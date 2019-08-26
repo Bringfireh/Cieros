@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GuardiansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HTMLReportsController.cs" />
     <Compile Include="Controllers\InstitutionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -2065,9 +2066,16 @@
     <Content Include="Views\MonthlySalaries\Details.cshtml" />
     <Content Include="Views\MonthlySalaries\Edit.cshtml" />
     <Content Include="Views\MonthlySalaries\Index.cshtml" />
+    <Content Include="Views\Messages\SingleGuardianMessage.cshtml" />
+    <Content Include="Views\Messages\SingleMessage.cshtml" />
+    <Content Include="Views\Messages\SendAllGuardians.cshtml" />
+    <Content Include="Views\Messages\SendAllStaff.cshtml" />
+    <Content Include="Views\Messages\SingleStaffMessage.cshtml" />
+    <Content Include="Views\Messages\SingleMsg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\HTMLReports\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
