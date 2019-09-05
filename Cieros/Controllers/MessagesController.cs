@@ -82,6 +82,7 @@ namespace Cieros.Controllers
             ViewBag.StaffPhone = phonenumbers.Select(s => s.PhoneNumber).FirstOrDefault();
             ViewBag.StaffNames = phonenumbers.Select(s => s.Names).FirstOrDefault();
             ViewBag.StaffID = StaffID;
+            ViewBag.Msg = "Message Sent Successfully.";
             return View();
         }
         // GET: Messages/Create
@@ -127,6 +128,7 @@ namespace Cieros.Controllers
                 db.Messages.Add(message);
                 db.SaveChanges();
             }
+            ViewBag.Msg = "Message Sent Successfully.";
             return View();
         }
 
@@ -173,6 +175,7 @@ namespace Cieros.Controllers
                 db.Messages.Add(message);
                 db.SaveChanges();
             }
+            ViewBag.Msg = "Message Sent Successfully.";
             return View();
         }
 
@@ -216,6 +219,7 @@ namespace Cieros.Controllers
             ViewBag.GuardianPhone = phonenumbers.Select(s => s.PhoneNumber).FirstOrDefault();
             ViewBag.GuardianNames = phonenumbers.Select(s => s.Names).FirstOrDefault();
             ViewBag.GuardianID = guardianID;
+            ViewBag.Msg = "Message Sent Successfully.";
             return View();
         }
         // POST: Messages/Create

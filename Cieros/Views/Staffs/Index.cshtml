@@ -21,11 +21,9 @@
                             <th>
                                 @Html.DisplayName("Staff ID")
                             </th>
+                           
                             <th>
-                                @Html.DisplayNameFor(model => model.Surname)
-                            </th>
-                            <th>
-                                @Html.DisplayName("Other Names")
+                                @Html.DisplayName("Staff Name")
                             </th>
                             <th>
                                 @Html.DisplayName("Sex")
@@ -51,14 +49,13 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.StaffID)
-
+                                    <a href="~/Staffs/Details?id=@item.StaffID">
+                                        @Html.DisplayFor(modelItem => item.StaffID)
+                                    </a>
                                 </td>
+                               
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Surname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Othernames)
+                                    @Html.DisplayFor(modelItem => item.Surname) &nbsp;@Html.DisplayFor(modelItem => item.Othernames)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Sex)
@@ -73,7 +70,7 @@
                                
                                 <td>
                                     <a href="~/Staffs/Edit?id=@item.StaffID "> Edit </a> |
-                                    <a href="~/Staffs/Details?id=@item.StaffID">Details</a> |
+                                    @*<a href="~/Staffs/Details?id=@item.StaffID">Details</a> |*@
                                     <a href="~/Staffs/Delete?id=@item.StaffID">Delete</a>
                                    
                                 </td>

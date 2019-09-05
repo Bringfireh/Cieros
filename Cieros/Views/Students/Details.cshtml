@@ -6,68 +6,99 @@
 
 <div class="container-fluid">
     <h2 class="h3 mb-2 text-gray-800">Student Details </h2>
-
-
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary"> Student  Details  |     @Html.ActionLink("Back to List", "Index")</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <div class="col-lg-6 ">
+                <div class="row">
+                    <div class="col-lg-6 ">
 
-                    <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped">
 
-                        <tr>
-                            <td> @Html.DisplayName("Surname")</td>
-                            <td>  @Html.DisplayFor(model => model.Surname)</td>
-                        </tr>
-                        <tr>
-                            <td>  @Html.DisplayName("Other Names")</td>
-                            <td>  @Html.DisplayFor(model => model.Othernames)</td>
-                        </tr>
-                        <tr>
-                            <td> @Html.DisplayName("Sex")</td>
-                            <td> @Html.DisplayFor(model => model.Sex)</td>
-                        </tr>
-                        <tr>
-                            <td> @Html.DisplayName("Date Of Birth")</td>
-                            <td>   @Html.DisplayFor(model => model.DateOfBirth)</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayName("Class")
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.StdClass)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>@Html.DisplayName("Label")</td>
-                            <td>  @Html.DisplayFor(model => model.Label)</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                @Html.DisplayName("Admission Number")
-                            </td>
-                            <td>
-                                @Html.DisplayFor(model => model.AdmissionNumber)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> @Html.DisplayName("Father's Name") </td>
-                            <td>  @Html.DisplayFor(model => model.Guardian.FatherName)</td>
-                        </tr>
+                            <tr>
+                                <td> @Html.DisplayName("Surname")</td>
+                                <td>  @Html.DisplayFor(model => model.Surname)</td>
+                            </tr>
+                            <tr>
+                                <td>  @Html.DisplayName("Other Names")</td>
+                                <td>  @Html.DisplayFor(model => model.Othernames)</td>
+                            </tr>
+                            <tr>
+                                <td> @Html.DisplayName("Sex")</td>
+                                <td> @Html.DisplayFor(model => model.Sex)</td>
+                            </tr>
+                            <tr>
+                                <td> @Html.DisplayName("Date Of Birth")</td>
+                                <td>   @Html.DisplayFor(model => model.DateOfBirth)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Class")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.StdClass)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayName("Label")</td>
+                                <td>  @Html.DisplayFor(model => model.Label)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayName("Admission Number")
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.AdmissionNumber)
+                                </td>
+                            </tr>
 
-                    </table>
 
+                        </table>
+
+                    </div>
+                    <div class="col-lg-6 ">
+                        <div>Guardian Information   @if (Model.GuardianID != null)
+                        {<text>|   <a href="~/Messages/SingleMessage/@Model.GuardianID">Message Guardian</a></text>}
+                        else {<text>|   <a href="~/Students/AddGuardian/@Model.ID">Add Guardian </a> </text> }</div>
+                        @if (Model.GuardianID != null)
+                        {
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td> @Html.DisplayName("Father's Name") </td>
+                                    <td>  @Html.DisplayFor(model => model.Guardian.FatherName)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayName("Mother's Name")</td>
+                                    <td>@Html.DisplayFor(model => model.Guardian.MotherName)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayName("Father's Email")</td>
+                                    <td>@Html.DisplayFor(model => model.Guardian.FatherEmail)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayName("Mother's Email")</td>
+                                    <td>@Html.DisplayFor(model => model.Guardian.MotherEmail)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayName("Father's Phone Number")</td>
+                                    <td>@Html.DisplayFor(model => model.Guardian.FatherPhoneNumber)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayName("Mother's Phone Number")</td>
+                                    <td>@Html.DisplayFor(model => model.Guardian.MotherPhoneNumber)</td>
+                                </tr>
+
+                            </table>
+                        }
+                        </div>
                 </div>
-                
-                <p>
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-                    @Html.ActionLink("Back to List", "Index")
-                </p>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                </div>
             </div>
-        </div>
     </div>
 </div>

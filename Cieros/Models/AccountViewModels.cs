@@ -65,6 +65,9 @@ namespace Cieros.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "User Roles")]
+        public string UserRoles { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

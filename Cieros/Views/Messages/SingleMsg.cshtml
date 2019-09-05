@@ -21,7 +21,8 @@
                     @Html.Hidden("Recepient", (String)ViewBag.StaffPhone)
                     @Html.Hidden("RecepientName", (String)ViewBag.StaffNames)
                     @Html.Hidden("StaffID", (String)ViewBag.StaffID)
-
+                    <div class="alert-success" style="padding-left:25px">@ViewBag.Msg</div>
+                    
                     <table class="table table-bordered table-striped">
                         <tr>
                             <td><b>Recepient</b></td>
@@ -44,12 +45,12 @@
                             </td>
                         </tr>
                         @*<tr>
-                                <td> <b>Message Type</b></td>
-                                <td>
-                                    @Html.EditorFor(model => model.MessageType, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.MessageType, "", new { @class = "text-danger" })
-                                </td>
-                            </tr>*@
+                    <td> <b>Message Type</b></td>
+                    <td>
+                        @Html.EditorFor(model => model.MessageType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MessageType, "", new { @class = "text-danger" })
+                    </td>
+                </tr>*@
 
 
                     </table>

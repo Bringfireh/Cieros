@@ -1,41 +1,91 @@
 ﻿@model Cieros.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="container">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block ">
+                            <div class="p-5">
+                                <div class="alert alert-dismissible alert-danger">
+                                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                    <strong>Cieros Register!</strong> Provide the necessary information and click Register.
+                                </div>
+
+                                <div class="alert alert-dismissible alert-info">
+                                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                    <strong>By Registering</strong> You created a user record with a corresponding role on the system.
+                                </div>
+
+                                <div class="alert alert-dismissible alert-light">
+                                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                    <strong>The Registration!</strong> Assigns a role to a user for access of the portal on the User Management Module.
+                                </div>
+                                <div class="alert alert-dismissible alert-primary">
+                                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                                    <strong>Provide a password </strong>  that will be accepted by the system. Make sure you use an Alphanumeric password with a special character.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">@ViewBag.Title.!</h1>
+                                </div>
+                                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "user", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <div class="form-group">
+
+                                        @Html.DropDownList("UserRoles", (IEnumerable<SelectListItem>)ViewBag.Name, htmlAttributes: new { @class = "form-control form-control-user", @Style = ":selected{color:black !important}" })
+
+                                    </div>
+                                    <div class="form-group">
+
+
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-user", @Placeholder = "Email" })
+
+                                    </div>
+                                    <div class="form-group">
+
+
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-user", @Placeholder = "Password" })
+
+                                    </div>
+                                    <div class="form-group">
+
+
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-user", @Placeholder = "Confirm Password" })
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Register" />
+
+                                    </div>
+                                }
+                                <hr />
+                                <p><img height="15" width="15" src="~/Images/btlogo.png" /> Powered by: <a href="http://www.bringfirehtech.com" target="_blank">Bringfireh Technologies</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -2072,6 +2072,7 @@
     <Content Include="Views\Messages\SendAllStaff.cshtml" />
     <Content Include="Views\Messages\SingleStaffMessage.cshtml" />
     <Content Include="Views\Messages\SingleMsg.cshtml" />
+    <Content Include="Views\Students\AddGuardian.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

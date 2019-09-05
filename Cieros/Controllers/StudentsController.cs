@@ -36,7 +36,23 @@ namespace Cieros.Controllers
             }
             return View(student);
         }
+        public ActionResult AddGuardian(string id)
+        {
+            ViewBag.GuardianID = id;
+            var guardian = db.Guardians.ToList();
+            ViewBag.Count = guardian.Count();
+            return View(guardian);
+        }
+        public ActionResult NewGuardian(string stdId, string guardianid)
+        {
+            var student = db.Students.Find(stdId);
+            student.GuardianID = guardianid;
+            db.Entry(student).State = EntityState.Modified;
+            db.SaveChanges();
+            string urladd = "~/Students/Details/" + stdId;
 
+            return Redirect(urladd);
+        }
         // GET: Students/Create
         public ActionResult Create()
         {

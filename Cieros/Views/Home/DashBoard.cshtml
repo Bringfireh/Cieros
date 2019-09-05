@@ -1,6 +1,12 @@
 ﻿
 @{
     ViewBag.Title = "DashBoard";
+
+    int totalStudents = Convert.ToInt32(Session["totalStudents"]);
+    int totalStaffs = Convert.ToInt32(Session["totalStaffs"]);
+    int totalMessages = Convert.ToInt32(Session["totalMessages"]);
+    int totalGuardians = Convert.ToInt32(Session["totalGuardians"]);
+   
 }
 
 <!-- Begin Page Content -->
@@ -22,7 +28,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total  Students/Pupils</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"># @totalStudents</div>
                         </div>
                         <div class="col-auto">
                             @*<i class="fas fa-calendar fa-2x text-gray-300"></i>*@
@@ -40,11 +46,12 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Guardians</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"># @totalGuardians</div>
                         </div>
                         <div class="col-auto">
-                           
-                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+
+                            <i class="fas fa-atom fa-2x text-gray-300"></i>
+                            
                         </div>
                     </div>
                 </div>
@@ -60,7 +67,7 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Number of Staff</div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"># @totalStaffs</div>
                                 </div>
                                 <div class="col">
                                     <div class="progress progress-sm mr-2">
@@ -84,7 +91,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Messages Sent</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"># @totalMessages</div>
                         </div>
                         <div class="col-auto">
                             @*<i class="fas fa-comments fa-2x text-gray-300"></i>*@
@@ -111,11 +118,11 @@
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
+                            @*<div class="dropdown-header">Dropdown Header:</div>
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Something else here</a>*@
                         </div>
                     </div>
                 </div>
@@ -133,17 +140,17 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Message Sources</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">System Actors</h6>
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
+                            @*<div class="dropdown-header">Dropdown Header:</div>
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Something else here</a>*@
                         </div>
                     </div>
                 </div>
@@ -154,14 +161,14 @@
                     </div>
                     <div class="mt-4 text-center small">
                         <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Guardians
+                            <i class="fas fa-circle text-primary"></i> Students
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Staff
+                            <i class="fas fa-circle text-success"></i> Guardians
                         </span>
-                        @*<span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
-                        </span>*@
+                        <span class="mr-2">
+                            <i class="fas fa-circle text-info"></i>  Staff
+                        </span>
                     </div>
                 </div>
             </div>

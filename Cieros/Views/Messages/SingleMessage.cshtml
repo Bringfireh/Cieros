@@ -21,50 +21,50 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.Hidden("Recepient", (String)ViewBag.GuardianPhone)
                     @Html.Hidden("RecepientName", (String)ViewBag.GuardianNames)
-                    @Html.Hidden("GuardianID", (String)ViewBag.GuardianID )
+                    @Html.Hidden("GuardianID", (String)ViewBag.GuardianID)
+                <div class="alert-success" style="padding-left:25px">@ViewBag.Msg</div>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td><b>Recepient</b></td>
+                            <td>
+                                @ViewBag.GuardianNames -  @ViewBag.GuardianPhone
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Message Title</b></td>
+                            <td>
+                                @Html.EditorFor(model => model.MessageTitle, new { htmlAttributes = new { @class = "form-control", @Required = "Required" } })
+                                @Html.ValidationMessageFor(model => model.MessageTitle, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Message Body</b></td>
+                            <td>
+                                @Html.TextAreaFor(model => model.MessageBody, new { @class = "form-control", @cols = 50, @rows = 10, @Required = "Required" })
+                                @Html.ValidationMessageFor(model => model.MessageBody, "", new { @class = "text-danger" })
+                            </td>
+                        </tr>
+                        @*<tr>
+                    <td> <b>Message Type</b></td>
+                    <td>
+                        @Html.EditorFor(model => model.MessageType, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MessageType, "", new { @class = "text-danger" })
+                    </td>
+                </tr>*@
 
-                <table class="table table-bordered table-striped">
-                    <tr>
-                        <td><b>Recepient</b></td>
-                        <td>
-                            @ViewBag.GuardianNames -  @ViewBag.GuardianPhone
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Message Title</b></td>
-                        <td>
-                            @Html.EditorFor(model => model.MessageTitle, new { htmlAttributes = new { @class = "form-control" , @Required ="Required"} })
-                            @Html.ValidationMessageFor(model => model.MessageTitle, "", new { @class = "text-danger" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><b>Message Body</b></td>
-                        <td>
-                            @Html.TextAreaFor(model => model.MessageBody,  new { @class = "form-control", @cols=50, @rows=10, @Required = "Required" })
-                            @Html.ValidationMessageFor(model => model.MessageBody, "", new { @class = "text-danger" })
-                        </td>
-                    </tr>
-                    @*<tr>
-                        <td> <b>Message Type</b></td>
-                        <td>
-                            @Html.EditorFor(model => model.MessageType, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.MessageType, "", new { @class = "text-danger" })
-                        </td>
-                    </tr>*@
 
-
-                </table>
+                    </table>
                     <div class="pull-right">
 
                         <div class="form-group">
-                            
-                                <input type="submit" value="Send" class="btn btn-success" />
-                           
+
+                            <input type="submit" value="Send" class="btn btn-success" />
+
                         </div>
                     </div>
                 }
 
-                
+
             </div>
         </div>
     </div>
