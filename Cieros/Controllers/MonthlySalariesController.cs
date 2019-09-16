@@ -17,9 +17,75 @@ namespace Cieros.Controllers
         // GET: MonthlySalaries
         public ActionResult Index()
         {
-            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == "July" && m.Year == "2019").Include(m => m.Staff);
-            ViewBag.Count = monthlySalaries.Count();
-            return View(monthlySalaries.ToList());
+            string thismonth = getMonthName(DateTime.Now.AddMonths(-1).Month);
+            int thisyear = DateTime.Now.Year;
+            if (thismonth != "December1")
+            {
+                ViewBag.ThisMonth = thismonth;
+                var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == thismonth && m.Year == thisyear.ToString()).Include(m => m.Staff);
+                ViewBag.Count = monthlySalaries.Count();
+                ViewBag.Month = thismonth;
+                ViewBag.Year = thisyear;
+                return View(monthlySalaries.ToList());
+            }
+            else
+            {
+                thisyear = thisyear - 1;
+                thismonth = "December";
+                var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == thismonth && m.Year == thisyear.ToString()).Include(m => m.Staff);
+                ViewBag.Count = monthlySalaries.Count();
+                ViewBag.Month = thismonth;
+                ViewBag.Year = thisyear;
+                return View(monthlySalaries.ToList());
+            }
+            
+        }
+
+        public string getMonthName(int month)
+        {
+            string name = "";
+            if (month == 1)
+            {
+                name = "January";
+            }
+            else if(month == 2){
+                name = "February";
+            }else if (month == 3)
+            {
+                name = "March";
+            }else if (month == 4)
+            {
+                name = "April";
+            }else if (month == 5)
+            {
+                name = "May";
+            }else if(month == 6)
+            {
+                name = "June";
+            }else if (month == 7)
+            {
+                name = "July";
+            }else if (month == 8)
+            {
+                name = "August";
+            }else if (month == 9)
+            {
+                name = "September";
+            }else if(month == 10)
+            {
+                name = "October";
+            }else if (month == 11)
+            {
+                name = "November";
+            }else if (month == 12)
+            {
+                name = "December";
+            }
+            else
+            {
+                name = "December1";
+            }
+            return name;
         }
 
         [HttpPost]
@@ -48,9 +114,20 @@ namespace Cieros.Controllers
             }
             var monthlySalaries = db.MonthlySalaries.Where(m => m.Month==Month && m.Year==Year).Include(m => m.Staff);
             ViewBag.Count = monthlySalaries.Count();
+            ViewBag.Month = Month;
+            ViewBag.Year = Year;
             return View(monthlySalaries.ToList());
         }
+
         
+        public ActionResult ResetPayroll(string Month, string Year)
+        {
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == Month && m.Year == Year).ToList();
+            
+                db.MonthlySalaries.RemoveRange(monthlySalaries);
+                db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         // GET: MonthlySalaries/Details/5
         public ActionResult Details(string id)
         {
