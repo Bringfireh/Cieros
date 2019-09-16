@@ -60,8 +60,8 @@
                     </div>
                     <div class="col-lg-6 ">
                         <div>Guardian Information   @if (Model.GuardianID != null)
-                        {<text>|   <a href="~/Messages/SingleMessage/@Model.GuardianID">Message Guardian</a></text>}
-                        else {<text>|   <a href="~/Students/AddGuardian/@Model.ID">Add Guardian </a> </text> }</div>
+                        {<text>|   <a href="~/Messages/SingleMessage/@Model.GuardianID" class="btn btn-info">Message Guardian</a></text>}
+                        else {<text>|   <a href="~/Students/AddGuardian/@Model.ID" class="btn btn-info">Add Guardian </a> </text> }</div>
                         @if (Model.GuardianID != null)
                         {
                             <table class="table table-bordered table-striped">

@@ -9,7 +9,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"> Staff  Details  |     @Html.ActionLink("Back to List", "Index")  |   <a href="/Messages/SingleMsg?id=@Model.StaffID">Message Staff</a></h6>
+            <h6 class="m-0 font-weight-bold text-primary"> Staff  Details  |     @Html.ActionLink("Back to List", "Index")  |   <a href="/Messages/SingleMsg?id=@Model.StaffID" class="btn btn-info">Message Staff</a></h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -163,7 +163,7 @@
                             </tr>
 
                         </table>
-                        <a href="~/Messages/SingleMsg?id=@Model.StaffID">Message Staff</a>
+                        <a href="~/Messages/SingleMsg?id=@Model.StaffID" class="btn btn-info">Message Staff</a>
                     </div>
                 </div>
                 
