@@ -134,7 +134,7 @@
                 </div>
                 <div class="modal-body">
                     Please provide Amount to Add.
-                    <input type="text" name="AddAmount" class="form-control form-control-user" />
+                    <input type="text" name="AddAmount" class="form-control form-control-user" id="AddAmount" onblur="CheckData2()"/>
                     <input type="hidden" name="month" value="@ViewBag.Month" />
                     <input type="hidden" name="year" value="@ViewBag.Year" />
                 </div>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="modal-body">
                     Please provide Amount to Deduct.
-                    <input type="text" name="DeductAmount" class="form-control form-control-user" />
+                    <input type="text" name="DeductAmount" class="form-control form-control-user" onblur="CheckData()" id="DeductAmount"/>
                     <input type="hidden" name="month" value="@ViewBag.Month" />
                     <input type="hidden" name="year" value="@ViewBag.Year" />
                 </div>
@@ -175,3 +175,20 @@
             </div>
     </div>
 </div>
+<script type="text/javascript">
+    var CheckData = function () {
+        var g = document.getElementById("DeductAmount").value;
+        if (isNaN(g)) {
+            alert("Please enter only numbers");
+            document.getElementById("DeductAmount").value = "";
+        }
+    };
+    var CheckData2 = function () {
+        var g = document.getElementById("AddAmount").value;
+        if (isNaN(g)) {
+            alert("Please enter only numbers");
+            document.getElementById("AddAmount").value = "";
+        }
+    };
+
+</script>
