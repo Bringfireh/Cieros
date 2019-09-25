@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Cieros.Models.MonthlySalary>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cieros - Pay Slip</title>
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="~/Images/Cieros.PNG" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+</head>
+<body class="container body-content">
+    <center>
+        @{ if (Session["institutionName"] != null)
+            {
+                string institutionName = Convert.ToString(Session["institutionName"]);
+                @*<text><h4 style="color:green !important">@institutionName</h4>  </text>*@
+            }
+            else
+            {
+                <script type="text/javascript">document.location = "../Account/Login";</script>
+            }
+        }
+
+
+    </center>
+    <div class="pull-left"><img src="~/Images/cieros.png" width="12" height="12" />&nbsp;<i>Cieros</i>  - 08039611996, 08073392045</div>
+    <span class="pull-right">&nbsp;<a href="javascript:print()" style="text-decoration:none;"><i class="fa fa-print fa-lg"></i></a></span>
+    <br />
+
+    @foreach (var item in Model)
+    {
+        string institutionName = Convert.ToString(Session["institutionName"]);
+
+        <div style="border:1px solid;border-radius:25px 5px;padding-top:10px;padding-left:5px;padding-right:5px;margin-top:10px;margin-bottom:5px">
+
+            <div class="pull-right"><h4 style="color:green !important">@institutionName.ToUpper() </h4> </div>
+            <text>
+                <b>>> Name:</b>  @item.Staff.Surname.ToUpper(), &nbsp; @item.Staff.Othernames.ToUpper() <br />
+                <b>>> Position:</b> @item.Staff.Position <br />
+                <b>>> Bank:</b> @item.Staff.BankName   <br />
+                <b>>> Account:</b> @item.Staff.AccountNumber <br />
+                <b>>> Account Type:</b> @item.Staff.AccountType
+                <div class="pull-right">Date: @DateTime.Now.Date.ToLongDateString()</div>
+            </text>
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <td align="center" colspan="4">
+                        <b>PAY SLIP FOR THE MONTH OF @String.Format("{0}", ViewBag.Month.ToUpper()), @ViewBag.Year</b>
+                    </td>
+                </tr>
+                <tr>
+                    <th>BASIC SALARY (NGN)</th>
+                    <th>ADDITIONS (NGN)</th>
+                    <th align="right">DEDUCTIONS (NGN)</th>
+                    <th align="right">NET SALARY (NGN)</th>
+                </tr>
+
+                <tr>
+
+                    <td align="right">
+                        @String.Format("{0:#,###,###.00}", item.BasicAmount)
+                    </td>
+                    <td align="right">
+                        @String.Format("{0:#,###,###.00}", item.Additions)
+                    </td>
+                    <td align="right">
+                        @String.Format("{0:#,###,###.00}", item.Deductions)
+                    </td>
+                    <td align="right">
+                        @String.Format("{0:#,###,###.00}", item.Balance)
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="3"><strong>Payable Net Salary</strong></td>
+                    <td align="right"><B>@String.Format("{0:#,###,###.00}", item.Balance)</B></td>
+                </tr>
+
+            </table>
+        </div>
+    }
+    <div><img src="~/Images/cieros.png" width="12" height="12" />&nbsp;<i>Cieros</i>  - 08039611996, 08073392045</div>
+</body>
+</html>

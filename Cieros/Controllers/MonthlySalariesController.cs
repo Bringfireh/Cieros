@@ -95,7 +95,7 @@ namespace Cieros.Controllers
            
             if(count <= 0)
             {
-                var staff = db.Staffs.ToList();
+                var staff = db.Staffs.Where(m => m.ActiveStatus==true).ToList();
                 foreach (var item in staff)
                 {
                     MonthlySalary ms = new MonthlySalary();
@@ -119,7 +119,13 @@ namespace Cieros.Controllers
             return View(monthlySalaries.ToList());
         }
 
-        
+        public ActionResult StaffSlip(string id)
+        {
+            var monthlySalaries = db.MonthlySalaries.Find(id);
+            ViewBag.Month = monthlySalaries.Month;
+            ViewBag.Year = monthlySalaries.Year;
+            return View(monthlySalaries);
+        }
         public ActionResult ResetPayroll(string Month, string Year)
         {
             var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == Month && m.Year == Year).ToList();
@@ -127,6 +133,20 @@ namespace Cieros.Controllers
                 db.MonthlySalaries.RemoveRange(monthlySalaries);
                 db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult BankSchedule(string Month, string Year)
+        {
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == Month && m.Year == Year).OrderBy(m=>m.Staff.BankName).ToList();
+            ViewBag.Month = Month;
+            ViewBag.Year = Year;
+            return View(monthlySalaries);
+        }
+        public ActionResult PaySlip(string Month, string Year)
+        {
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == Month && m.Year == Year).ToList();
+            ViewBag.Month = Month;
+            ViewBag.Year = Year;
+            return View(monthlySalaries);
         }
         // GET: MonthlySalaries/Details/5
         public ActionResult Details(string id)
@@ -143,6 +163,37 @@ namespace Cieros.Controllers
             return View(monthlySalary);
         }
        
+        public ActionResult Additions()
+        {
+            string addAmount = Request.Form["AddAmount"];
+            string month = Request.Form["month"];
+            string year = Request.Form["year"];
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == month && m.Year == year).ToList();
+            foreach(var item in monthlySalaries)
+            {
+                item.Additions = Convert.ToDecimal(addAmount);
+                item.Balance = item.BasicAmount + item.Additions - item.Deductions;
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+           
+            return RedirectToAction("Index");
+        }
+        public ActionResult Deductions()
+        {
+            string deductAmount = Request.Form["DeductAmount"];
+            string month = Request.Form["month"];
+            string year = Request.Form["year"];
+            var monthlySalaries = db.MonthlySalaries.Where(m => m.Month == month && m.Year == year).ToList();
+            foreach (var item in monthlySalaries)
+            {
+                item.Deductions  = Convert.ToDecimal(deductAmount);
+                item.Balance = item.BasicAmount + item.Additions - item.Deductions;
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
         // GET: MonthlySalaries/Create
         public ActionResult Create()
         {
@@ -200,6 +251,7 @@ namespace Cieros.Controllers
         {
             if (ModelState.IsValid)
             {
+                monthlySalary.Balance = monthlySalary.BasicAmount + monthlySalary.Additions - monthlySalary.Deductions;
                 db.Entry(monthlySalary).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

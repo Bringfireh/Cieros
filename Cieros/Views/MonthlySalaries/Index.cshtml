@@ -9,21 +9,29 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Payroll  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    <a href="">Add To All</a>     |  <a href="">Deduct from All</a></h6>
+            <h6 class="m-0 font-weight-bold text-primary">Payroll  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    <a href="~/MonthlySalaries/BankSchedule?Month=@ViewBag.Month&Year=@ViewBag.Year" target="_blank">Print Bank Schedule</a>     |  <a href="~/MonthlySalaries/PaySlip?Month=@ViewBag.Month&Year=@ViewBag.Year" target="_blank">Print PaySlip</a> </h6>
         </div>
+
         <div class="col-lg-6 ">
             <form method="post" action="~/MonthlySalaries" name="frm" id="frm" class="user" role="form">
-                <table>
-                    <tr>
-                        <td> @Html.DropDownList("Month", new SelectList(new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }), htmlAttributes: new { @class = "form-control form-control-user", @Required = "required", @Style = "padding:0.4rem 1rem !important" })</td>
-                        <td>@Html.DropDownList("Year", new SelectList(new string[] { "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040" }), htmlAttributes: new { @class = "form-control form-control-user", @Required = "required", @Style = "padding:0.4rem 1rem !important" })</td>
-                        <td><input type="submit" class="btn btn-outline-info" /></td>
-                        <td><a href="~/MonthlySalaries/ResetPayroll?Month=@ViewBag.Month&Year=@ViewBag.Year" class="btn btn-outline-danger">Reset This Payroll</a></td>
-                    </tr>
-                </table>
+                <div class="tab-content table-responsive">
+                    <table>
+                        <tr width="95%">
+                            <td> @Html.DropDownList("Month", new SelectList(new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }), htmlAttributes: new { @class = "form-control form-control-user", @Required = "required", @Style = "padding:0.4rem 1rem !important" })</td>
+                            <td>@Html.DropDownList("Year", new SelectList(new string[] { "2019", "2020", "2021", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033", "2034", "2035", "2036", "2037", "2038", "2039", "2040" }), htmlAttributes: new { @class = "form-control form-control-user", @Required = "required", @Style = "padding:0.4rem 1rem !important" })</td>
+                            <td><input type="submit" class="btn btn-outline-info" /></td>
+                            <td><a href="~/MonthlySalaries/ResetPayroll?Month=@ViewBag.Month&Year=@ViewBag.Year" class="btn btn-outline-danger">Reset This Payroll</a></td>
+                            <td> <a href="#" data-toggle="modal" data-target="#payrollAdditions" class="btn btn-outline-info">Add All</a></td>
+                            <td><a href="#" data-toggle="modal" data-target="#payrollDeductions" class="btn btn-outline-info">Subtract All</a></td>
+                        </tr>
+                    </table>
+                </div>
             </form>
+
         </div>
+
         <hr />
+       
         <div class="card-body">
             <div class="table-responsive">
 
@@ -41,27 +49,27 @@
                                 @Html.DisplayNameFor(model => model.Year)
                             </th>
                             <th>
-                                @Html.DisplayName("Basic Amount")
+                                @Html.DisplayName("Basic Amount") (NGN)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Additions)
+                                @Html.DisplayNameFor(model => model.Additions) (NGN)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Deductions)
+                                @Html.DisplayNameFor(model => model.Deductions) (NGN)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Balance)
+                                @Html.DisplayNameFor(model => model.Balance) (NGN)
                             </th>
                             <th></th>
                         </tr>
-                        </thead>
+                    </thead>
                     <tfoot>
                         <tr>
                             <td colspan="3">TOTAL AMOUNT</td>
-                            <td align="right">@Model.Sum(m => m.BasicAmount)</td>
-                            <td align="right">@Model.Sum(m => m.Additions)</td>
-                            <td align="right">@Model.Sum(m => m.Deductions)</td>
-                            <td align="right">@Model.Sum(m => m.Balance)</td>
+                            <td align="right"> @String.Format("{0:##,###,###.00}", Model.Sum(m => m.BasicAmount))</td>
+                            <td align="right"> @String.Format("{0:##,###,###.00}", Model.Sum(m => m.Additions))</td>
+                            <td align="right"> @String.Format("{0:##,###,###.00}", Model.Sum(m => m.Deductions))</td>
+                            <td align="right"> @String.Format("{0:##,###,###.00}", Model.Sum(m => m.Balance))</td>
                             <td>&nbsp;</td>
                         </tr>
                     </tfoot>
@@ -79,30 +87,91 @@
                                     @Html.DisplayFor(modelItem => item.Year)
                                 </td>
                                 <td align="right">
-                                    @Html.DisplayFor(modelItem => item.BasicAmount)
+                                    @String.Format("{0:#,###,###.00}", item.BasicAmount)
+
                                 </td>
                                 <td align="right">
-                                    @Html.DisplayFor(modelItem => item.Additions)
+
+                                    @String.Format("{0:#,###,###.00}", item.Additions)
                                 </td>
                                 <td align="right">
-                                    @Html.DisplayFor(modelItem => item.Deductions)
+                                    @String.Format("{0:#,###,###.00}", item.Deductions)
+
                                 </td>
                                 <td align="right">
-                                    @Html.DisplayFor(modelItem => item.Balance)
+
+                                    @String.Format("{0:#,###,###.00}", item.Balance)
                                 </td>
                                 <td>
                                     <a href="~/MonthlySalaries/Edit?id=@item.ID">Edit</a>
                                     @*@Html.ActionLink("Edit", "Edit", new { id = item.ID })*@ |
-                                   
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+                                    @*@Html.ActionLink("Delete", "Delete", new { id = item.ID }) |*@
+                                    <a href="~/MonthlySalaries/StaffSlip?id=@item.ID" style="text-decoration:none;" target="_blank"><i class="fa fa-print fa-sm"></i></a>
                                 </td>
                             </tr>
                         }
-                       
+
                     </tbody>
                 </table>
 
-            </div>  
+            </div>
         </div>
+    </div>
+</div>
+
+<!--Modal for Additions-->
+<div class="modal fade" id="payrollAdditions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("Additions", "MonthlySalaries", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "user", role = "form" }))
+            {
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Payroll Additions</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Please provide Amount to Add.
+                    <input type="text" name="AddAmount" class="form-control form-control-user" />
+                    <input type="hidden" name="month" value="@ViewBag.Month" />
+                    <input type="hidden" name="year" value="@ViewBag.Year" />
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" name="Add" value="Add" class="btn btn-info " />
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Deductions-->
+<div class="modal fade" id="payrollDeductions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @using (Html.BeginForm("Deductions", "MonthlySalaries", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "user", role = "form" }))
+            {
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Payroll Deductions</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Please provide Amount to Deduct.
+                    <input type="text" name="DeductAmount" class="form-control form-control-user" />
+                    <input type="hidden" name="month" value="@ViewBag.Month" />
+                    <input type="hidden" name="year" value="@ViewBag.Year" />
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" name="Deduct" value="Deduct" class="btn btn-info " />
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+
+                   
+                </div>
+            }
+            </div>
     </div>
 </div>

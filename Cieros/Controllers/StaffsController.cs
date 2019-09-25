@@ -46,10 +46,11 @@ namespace Cieros.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StaffID,Surname,Othernames,Sex,MaritalStatus,DateOfBirth,MaidenName,Country,StatOfOrigin,LocalGovt,Religion,Discipline,Qualification,DateOfAppointment,Position,BankName,AccountNumber,AccountType,PhoneNumber,EmailAddress,NextOfKinName,NextOfKinAddress,NextOfKinPhone,NextOfKinEmail,NextOfKinRelationship,BasicSalary,MonthlySalary")] Staff staff)
+        public ActionResult Create([Bind(Include = "StaffID,Surname,Othernames,Sex,MaritalStatus,DateOfBirth,MaidenName,Country,StatOfOrigin,LocalGovt,Religion,Discipline,Qualification,DateOfAppointment,Position,BankName,AccountNumber,AccountType,PhoneNumber,EmailAddress,NextOfKinName,NextOfKinAddress,NextOfKinPhone,NextOfKinEmail,NextOfKinRelationship,BasicSalary,MonthlySalary,ActiveStatus")] Staff staff)
         {
             if (ModelState.IsValid)
             {
+                staff.ActiveStatus = true;
                 db.Staffs.Add(staff);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +79,11 @@ namespace Cieros.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StaffID,Surname,Othernames,Sex,MaritalStatus,DateOfBirth,MaidenName,Country,StatOfOrigin,LocalGovt,Religion,Discipline,Qualification,DateOfAppointment,Position,BankName,AccountNumber,AccountType,PhoneNumber,EmailAddress,NextOfKinName,NextOfKinAddress,NextOfKinPhone,NextOfKinEmail,NextOfKinRelationship,BasicSalary,MonthlySalary")] Staff staff)
+        public ActionResult Edit([Bind(Include = "StaffID,Surname,Othernames,Sex,MaritalStatus,DateOfBirth,MaidenName,Country,StatOfOrigin,LocalGovt,Religion,Discipline,Qualification,DateOfAppointment,Position,BankName,AccountNumber,AccountType,PhoneNumber,EmailAddress,NextOfKinName,NextOfKinAddress,NextOfKinPhone,NextOfKinEmail,NextOfKinRelationship,BasicSalary,MonthlySalary,ActiveStatus")] Staff staff)
         {
             if (ModelState.IsValid)
             {
+                staff.ActiveStatus = true;
                 db.Entry(staff).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -11,6 +11,7 @@
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(model => model.StaffID)
+        @Html.HiddenFor(model => model.ActiveStatus)
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Edit Staff  |  @Html.ActionLink("Back to List", "Index")</h6>

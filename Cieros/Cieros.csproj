@@ -178,7 +178,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GuardiansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HTMLReportsController.cs" />
     <Compile Include="Controllers\InstitutionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
@@ -2073,10 +2072,12 @@
     <Content Include="Views\Messages\SingleStaffMessage.cshtml" />
     <Content Include="Views\Messages\SingleMsg.cshtml" />
     <Content Include="Views\Students\AddGuardian.cshtml" />
+    <Content Include="Views\MonthlySalaries\BankSchedule.cshtml" />
+    <Content Include="Views\MonthlySalaries\PaySlip.cshtml" />
+    <Content Include="Views\MonthlySalaries\StaffSlip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\HTMLReports\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

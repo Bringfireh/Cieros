@@ -93,9 +93,12 @@ namespace Cieros.Models
         [StringLength(50)]
         public string NextOfKinRelationship { get; set; }
 
+        public bool? ActiveStatus { get; set; }
+
         public decimal? BasicSalary { get; set; }
 
         public decimal? MonthlySalary { get; set; }
+       
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonthlySalary> MonthlySalaries { get; set; }
