@@ -2075,6 +2075,7 @@
     <Content Include="Views\MonthlySalaries\BankSchedule.cshtml" />
     <Content Include="Views\MonthlySalaries\PaySlip.cshtml" />
     <Content Include="Views\MonthlySalaries\StaffSlip.cshtml" />
+    <Content Include="Views\Students\ViewByClass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

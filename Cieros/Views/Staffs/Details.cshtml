@@ -9,7 +9,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"> Staff  Details  |     @Html.ActionLink("Back to List", "Index")  |   <a href="/Messages/SingleMsg?id=@Model.StaffID" class="btn btn-info">Message Staff</a></h6>
+            <h6 class="m-0 font-weight-bold text-primary"> Staff  Details  |     @Html.ActionLink("Back to List", "Index")  |   <a href="/Messages/SingleMsg?id=@Model.StaffID" class="btn btn-info">Message Staff</a>  |   <a href="~/Staffs/Activate?staffId=@Model.StaffID" class="btn btn-outline-info">Activate</a> |   <a href="~/Staffs/DeActivate?staffId=@Model.StaffID" class="btn btn-outline-info">DeActivate</a></h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -161,7 +161,10 @@
                                 <td>@Html.DisplayName("Monthly Salary")</td>
                                 <td> @Html.DisplayFor(model => model.MonthlySalary)</td>
                             </tr>
-
+                            <tr>
+                                <td>@Html.DisplayName("Active Status")</td>
+                                <td style="color:red">@if(Model.ActiveStatus==true){<text>ACTIVE</text>}else{<text>INACTIVE</text>}</td>
+                            </tr>
                         </table>
                         <a href="~/Messages/SingleMsg?id=@Model.StaffID" class="btn btn-info">Message Staff</a>
                     </div>

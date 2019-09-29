@@ -21,7 +21,17 @@ namespace Cieros.Controllers
             ViewBag.Count = students.Count();
             return View(students.ToList());
         }
+        public ActionResult ViewByClass()
+        {
+            var students = db.Students.Where(s => s.StdClass == "JSS 1").ToList();
+            return View(students);
+        }
+        [HttpPost]
+        public ActionResult ViewByClass(string Class, string label)
+        {
 
+            return View();
+        }
         // GET: Students/Details/5
         public ActionResult Details(string id)
         {

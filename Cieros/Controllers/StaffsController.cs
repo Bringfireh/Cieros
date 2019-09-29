@@ -40,7 +40,34 @@ namespace Cieros.Controllers
         {
             return View();
         }
+        public ActionResult Activate(string staffId)
+        {
+            Staff staff = db.Staffs.Find(staffId);
 
+            if (staff == null)
+            {
+                return HttpNotFound();
+            }
+            staff.ActiveStatus = true;
+            db.Entry(staff).State = EntityState.Modified;
+            db.SaveChanges();
+            string urladd = "~/Staffs/Details?id=" + staffId;
+            return Redirect(urladd);
+        }
+        public ActionResult DeActivate(string staffId)
+        {
+            Staff staff = db.Staffs.Find(staffId);
+
+            if (staff == null)
+            {
+                return HttpNotFound();
+            }
+            staff.ActiveStatus = false;
+            db.Entry(staff).State = EntityState.Modified;
+            db.SaveChanges();
+            string urladd = "~/Staffs/Details?id=" + staffId;
+            return Redirect(urladd);
+        }
         // POST: Staffs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

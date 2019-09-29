@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Cieros.Models.Student>
+
+@{
+    ViewBag.Title = "View By Class";
+}
+<div class="container-fluid">
+    <h2 class="h3 mb-2 text-gray-800">Students/Pupils  </h2>
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Students/Pupils  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>  |    <a href="Javascript:history.go(-1)">Back </a></h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Surname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Othernames)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Sex)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateOfBirth)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StdClass)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Label)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AdmissionNumber)
+                        </th>
+                       
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Surname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Othernames)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sex)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StdClass)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Label)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AdmissionNumber)
+                            </td>
+                            
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <a href="Javascript:history.go(-1)">Back </a>
+</div>

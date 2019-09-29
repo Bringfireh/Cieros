@@ -10,7 +10,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Staff  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    @Html.ActionLink("Create New", "Create")</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Staff  <span class="badge" style="background-color:antiquewhite">@ViewBag.Count</span>   |    @Html.ActionLink("Create New", "Create")    </h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -35,7 +35,7 @@
                             <th>
                                 @Html.DisplayName("Email Address")
                             </th>
-                           
+                            <th>STATUS</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -47,34 +47,37 @@
 
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    <a href="~/Staffs/Details?id=@item.StaffID">
-                                        @Html.DisplayFor(modelItem => item.StaffID)
-                                    </a>
-                                </td>
-                               
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Surname) &nbsp;@Html.DisplayFor(modelItem => item.Othernames)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Sex)
-                                </td>
-                               
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.EmailAddress)
-                                </td>
-                               
-                                <td>
-                                    <a href="~/Staffs/Edit?id=@item.StaffID "> Edit </a> |
-                                    @*<a href="~/Staffs/Details?id=@item.StaffID">Details</a> |*@
-                                    <a href="~/Staffs/Delete?id=@item.StaffID">Delete</a>
-                                   
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <a href="~/Staffs/Details?id=@item.StaffID">
+                                    @Html.DisplayFor(modelItem => item.StaffID)
+                                </a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Surname) &nbsp;@Html.DisplayFor(modelItem => item.Othernames)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sex)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmailAddress)
+                            </td>
+                            <td style="color:red">@if (item.ActiveStatus == true)
+                            {<text>ACTIVE</text>}
+                        else
+                        {<text>INACTIVE</text>}</td>
+                            <td>
+                                <a href="~/Staffs/Edit?id=@item.StaffID "> Edit </a> |
+                                @*<a href="~/Staffs/Details?id=@item.StaffID">Details</a> |*@
+                                <a href="~/Staffs/Delete?id=@item.StaffID">Delete</a>
+
+                            </td>
+                        </tr>
                         }
                     </tbody>
                 </table>
