@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "End of Session";
 }
 <div class="container-fluid">
     <h2 class="h3 mb-2 text-gray-800">End of Session Process  </h2>
@@ -12,8 +12,11 @@
         </div>
         <div class="card-body">
             <center>
-                
-            </center>
+                @if(ViewBag.Msg!=null) { <text>@ViewBag.Msg</text>}
+                <form method="post" action="~/SessionPeriod/" name="frm" id="frm" class="user" role="form">
+                    <input type="submit" class="btn btn-info" value="End Session" />
+                </form>
+</center>
         </div>
     </div>
 </div>
