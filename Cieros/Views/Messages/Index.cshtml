@@ -42,25 +42,25 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateSent)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Recepient)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MessageBody)
-                            </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateSent)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Recepient)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MessageBody)
+                                </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MessageType)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MessageTitle)
-                            </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MessageType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MessageTitle)
+                                </td>
 
-                        </tr>
+                            </tr>
                         }
                     </tbody>
                 </table>

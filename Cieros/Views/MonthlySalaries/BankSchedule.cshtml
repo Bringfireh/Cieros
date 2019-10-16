@@ -16,6 +16,12 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/site.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <style type="text/css">
+        table, th, tr, td {
+            border: 1px solid;
+            border-color: black !important
+        }
+    </style>
 </head>
 <body class="container body-content">
     <center>
@@ -44,7 +50,7 @@
         </text>
 
         <table class="table table-bordered table-striped" width="100%" cellspacing="0">
-            <tr>
+            <tr style="">
                 <th> @Html.DisplayName("S/No")</th>
                 <th>
                     @Html.DisplayName("Staff Name")
@@ -110,12 +116,12 @@
     </div>
 
 
-    <div><img src="~/Images/cieros.png" width="12" height="12" />&nbsp;<i>Cieros</i>  - 08039611996, 08073392045</div>
+    @*<div><img src="~/Images/cieros.png" width="12" height="12" />&nbsp;<i>Cieros</i>  - 08039611996, 08073392045</div>
     <center>
         <footer>
             <span><p><img height="15" width="15" src="~/Images/btlogo.png" /> Powered by: <a href="http://www.bringfirehtech.com" target="_blank">Bringfireh Technologies</a></p></span>
         </footer>
-    </center>
+    </center>*@
 
 
 </body>

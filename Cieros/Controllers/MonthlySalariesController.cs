@@ -179,6 +179,7 @@ namespace Cieros.Controllers
            
             return RedirectToAction("Index");
         }
+
         public ActionResult Deductions()
         {
             string deductAmount = Request.Form["DeductAmount"];
@@ -194,6 +195,7 @@ namespace Cieros.Controllers
             }
             return RedirectToAction("Index");
         }
+
         // GET: MonthlySalaries/Create
         public ActionResult Create()
         {
