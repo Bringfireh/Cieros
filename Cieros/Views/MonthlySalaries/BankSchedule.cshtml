@@ -22,106 +22,137 @@
             border-color: black !important
         }
     </style>
+    <script language="javascript" type="text/javascript">
+        function printDiv(divID) {
+            //Get the HTML of div
+            var divElements = document.getElementById(divID).innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+            //Reset the page's HTML with div's HTML only
+            document.body.innerHTML =
+                "<html><head><title></title></head><body>" +
+                divElements + "</body></html>";
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+
+
+        }
+    </script>
 </head>
 <body class="container body-content">
-    <center>
-        @{ if (Session["institutionName"] != null)
-            {
-                string institutionName = Convert.ToString(Session["institutionName"]);
-                <text><h3 style="color:green !important">@institutionName.ToUpper()</h3>  </text>
+    <div class="row">
+        <div class="col-1" style=" margin-left: 4%;margin-bottom:2%;">
+            @*<input type="button" value="Print" onclick="javascript:printDiv('printdiv')" style=" cursor: pointer;" class="btn-success" />*@
+            <a @*href="javascript:print()"*@ href="" style="text-decoration:none;" onclick="javascript:printDiv('printdiv')" class="btn btn-success"><i class="fa fa-print fa-lg"></i> Print</a>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="container-fluid" id="printdiv" style="border:solid 1px !important;">
+
+
+        <center>
+            @{ if (Session["institutionName"] != null)
+                {
+                    string institutionName = Convert.ToString(Session["institutionName"]);
+                    <text><h3 style="color:green !important">@institutionName.ToUpper()</h3>  </text>
+                }
+                else
+                {
+                    <script type="text/javascript">document.location = "../Account/Login";</script>
+                }
             }
-            else
-            {
-                <script type="text/javascript">document.location = "../Account/Login";</script>
-            }
-        }
 
-        <h4><u>BANK SCHEDULE FOR THE MONTH OF @String.Format("{0}",ViewBag.Month.ToUpper()), @ViewBag.Year </u></h4>
-    </center>
-    <span class="pull-right">@*<a href="javascript:exporttoxls()" style="text-decoration:none;" ><i class="fa fa-save fa-lg"></i></a>*@&nbsp;<a href="javascript:print()" style="text-decoration:none;"><i class="fa fa-print fa-lg"></i></a></span>
-    @foreach (var messo in Model.Select(gg => gg.Staff.BankName).Distinct().ToList())
-    {
+            <h4><u>BANK SCHEDULE FOR THE MONTH OF @String.Format("{0}", ViewBag.Month.ToUpper()), @ViewBag.Year </u></h4>
+        </center>
+        <span class="pull-right">@*<a href="javascript:exporttoxls()" style="text-decoration:none;" ><i class="fa fa-save fa-lg"></i></a>*@&nbsp;</span>
+        @foreach (var messo in Model.Select(gg => gg.Staff.BankName).Distinct().ToList())
+        {
 
-        <text>
+            <text>
 
-            <div class="panel-heading" role="tab">
-                <b>@messo.ToUpper() >></b>
-            </div>
-        </text>
+                <div class="panel-heading" role="tab">
+                    <b>@messo.ToUpper() >></b>
+                </div>
+            </text>
 
-        <table class="table table-bordered table-striped" width="100%" cellspacing="0">
-            <tr style="">
-                <th> @Html.DisplayName("S/No")</th>
-                <th>
-                    @Html.DisplayName("Staff Name")
-                </th>
-                @*<th>
+            <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+                <tr style="">
+                    <th> @Html.DisplayName("S/No")</th>
+                    <th>
+                        @Html.DisplayName("Staff Name")
+                    </th>
+                    @*<th>
                         @Html.DisplayName("Bank Name")
                     </th>*@
-                <th>
-                    @Html.DisplayName("Account Number")
-                </th>
-                <th>
-                    @Html.DisplayName("Account Type")
-                </th>
-                <th>
-                    @Html.DisplayName("Salary Amount (NGN)")
-                </th>
-
-            </tr>
-            @{
-                int c = 0;
-            }
-            @foreach (var item in Model.OrderBy(item => item.Staff.Surname).Where(item => item.Staff.BankName == messo))
-            {
-                <tr>
-                    <td>
-                        @{Output.WriteLine(++c);}
-
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Staff.Surname), &nbsp; @Html.DisplayFor(modelItem => item.Staff.Othernames)
-                    </td>
-                    @*<td>
-                            @Html.DisplayFor(modelItem => item.Staff.BankName)
-                        </td>*@
-                    <td align="right">
-                        @Html.DisplayFor(modelItem => item.Staff.AccountNumber)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Staff.AccountType)
-                    </td>
-
-                    <td align="right">
-                        @String.Format("{0:#,###,###.00}", item.Balance)
-
-                    </td>
+                    <th>
+                        @Html.DisplayName("Account Number")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Account Type")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Salary Amount (NGN)")
+                    </th>
 
                 </tr>
-            }
-            <tr>
-                <td colspan="4">@messo.ToUpper() TOTAL AMOUNT = </td>
+                @{
+                    int c = 0;
+                }
+                @foreach (var item in Model.OrderBy(item => item.Staff.Surname).Where(item => item.Staff.BankName == messo))
+                {
+                    <tr>
+                        <td>
+                            @{Output.WriteLine(++c);}
 
-                <td align="right"><b>@String.Format("{0:##,###,###.00}", Model.Where(m => m.Staff.BankName == messo).Sum(m => m.Balance))</b></td>
-            </tr>
-        </table>
-    }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Staff.Surname), &nbsp; @Html.DisplayFor(modelItem => item.Staff.Othernames)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Staff.BankName)
+                        </td>*@
+                        <td align="right">
+                            @Html.DisplayFor(modelItem => item.Staff.AccountNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Staff.AccountType)
+                        </td>
 
-    <div class="pull-right">
-        <b>
-            TOTAL =   &nbsp; NGN @String.Format("{0:##,###,###.00}", Model.Sum(m => m.Balance))
-        </b>
-        <hr />
-        <hr />
+                        <td align="right">
+                            @String.Format("{0:#,###,###.00}", item.Balance)
+
+                        </td>
+
+                    </tr>
+                }
+                <tr>
+                    <td colspan="4">@messo.ToUpper() TOTAL AMOUNT = </td>
+
+                    <td align="right"><b>@String.Format("{0:##,###,###.00}", Model.Where(m => m.Staff.BankName == messo).Sum(m => m.Balance))</b></td>
+                </tr>
+            </table>
+        }
+
+        <div class="pull-right">
+            <b>
+                TOTAL =   &nbsp; NGN @String.Format("{0:##,###,###.00}", Model.Sum(m => m.Balance))
+            </b>
+            <hr />
+            <hr />
+        </div>
+
     </div>
-
-
     @*<div><img src="~/Images/cieros.png" width="12" height="12" />&nbsp;<i>Cieros</i>  - 08039611996, 08073392045</div>
-    <center>
-        <footer>
-            <span><p><img height="15" width="15" src="~/Images/btlogo.png" /> Powered by: <a href="http://www.bringfirehtech.com" target="_blank">Bringfireh Technologies</a></p></span>
-        </footer>
-    </center>*@
+        <center>
+            <footer>
+                <span><p><img height="15" width="15" src="~/Images/btlogo.png" /> Powered by: <a href="http://www.bringfirehtech.com" target="_blank">Bringfireh Technologies</a></p></span>
+            </footer>
+        </center>*@
 
 
 </body>
